@@ -1,0 +1,25 @@
+ Commitments to Past, Present & Future — OGDCH_HANDBOOK
+
+Company: Anticloud FZ LLE
+Model: PAX L5 Narrow L2 General 27B
+Project: OGDCH_HANDBOOK | Category: GOVERNMENT
+Upstream: https://github.com/opendata-swiss/ogdch_handbook (MIT)
+
+ Overview
+
+This document covers commitments to past, present & future for the Anticloud integration of OGDCH_HANDBOOK.
+
+Swiss government open data standards
+
+ Anticloud Integration
+
+PAX L5 Narrow L2 General 27B is integrated into OGDCH_HANDBOOK to provide:
+- Local AI inference with zero cloud dependency
+- AIOSS tamper-evident audit chain
+- AES-256 encryption at rest
+- Single-binary deployment
+
+ Contact
+
+Lois-Kleinner Alpasan — CEO & CTO, Anticloud FZ LLE
+lois@0-1.gg | 0-1.gg
