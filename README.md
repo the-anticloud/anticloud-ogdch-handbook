@@ -1,242 +1,93 @@
 # OGDCH_HANDBOOK
 
-**Category:** GOVERNMENT
-**Status:** Active development with Anticloud overlay
+> Anticloud offline package — upstream: opendata-swiss/ogdch-handbook @ `master`.
 
 ## What This Project Does
 
-OGDCH_HANDBOOK is an open-source project in the GOVERNMENT category.
+Home of the handbook of opendata.swiss: https://handbook.opendata.swiss/
 
-This project provides tools, libraries, and functionality for developers
-and end users working in the GOVERNMENT domain. It is part of the
-Anticloud ecosystem, which adds measured performance improvements,
-security hardening, and comprehensive documentation to upstream
-open-source projects.
+## Upstream README
 
-The project addresses key challenges in GOVERNMENT by providing:
+# Handbook for opendata.swiss
 
-- A well-tested, community-driven codebase
-- Standard interfaces compatible with the broader ecosystem
-- Documentation and examples for common use cases
-- Integration points for the Anticloud overlay improvements
+## About
 
-## Installation
+This is the handbook for [opendata.swiss](https://opendata.swiss/).
+It is published at https://handbook.opendata.swiss.
 
-### Prerequisites
+### Content and Target Group
 
-Before installing OGDCH_HANDBOOK, ensure you have the following:
+The handbook is targeted towards data publishers and data users:
 
-- A compatible operating system (Linux, macOS, or Windows)
-- Required build tools as specified by the upstream project
-- Runtime dependencies per the upstream requirements
+- data publishers get guidance on how to publish their data for themselves
+  and on opendata.swiss
+- data users find instructions on how to use the data via api and
+  how to search for data on opendata.swiss
 
-### From Source
+### Language Versions
 
-To build from source, clone the repository and follow the
-upstream build instructions:
+It is currently available in the two languages German and French. German is its original
+language and French is added as a translation. Some content is provided in English
+language, which is currently not considered as a translation but rather as a fallback
+for text, that does not come with language versions yet.
 
-See the upstream repository for build instructions.
+### History
 
-### Package Managers
+This repo replaces the previous version of the handbook, which can be found here:
+https://github.com/opendata-swiss/ogd-handbook-site
 
-Depending on your platform, OGDCH_HANDBOOK may be available
-through package managers such as apt, brew, or pip. Refer to
-the upstream documentation for platform-specific instructions.
+## Technical setup
 
-## Usage
+The handbook is implemented with [Sphinx](https://www.sphinx-doc.org/en/master/),
+Sphinx is a static site generator for documentations.
+The source code is written in [reStructuredText](https://en.wikipedia.org/wiki/ReStructuredText).
 
-### Basic Usage
+The handbook is structured into:
+- The **Source**: as reStructuredText
+- The **Translations**: as string translations
 
-After installation, OGDCH_HANDBOOK can be invoked as follows:
+The **Source** can be found at `source/content` with some pages such as the homepage `source/index.rst`
+directly in the `source` directory. All source files have the ending `.rst` as they contain
+reStructuredText.
+Most source files are in German language, some are written in English.
+No matter what language of these files are in: German or English: the `.rst` files are considered together as
+the German/source version of the handbook.
 
-```bash
-ogdch-handbook --help
-ogdch-handbook
+The **Translations** can be found at `source/locale`. They contain text strings that have
+been extracted from the **Source**. These text strings are stored along with translations in `.po` files.
+If no translation is given in these files: the fallback is the original text in the **Source**.
+The tool used for translations is
+[sphinx-intl](https://www.sphinx-doc.org/en/master/usage/advanced/intl.html)
+
+**Locales**: Currently there are two locales of the handbook:
+- a German locale at `source/locale/de`: the translations there are left empty, so that the fallback, the **Source**
+  is used
+- a French locale at `source/locale/fr`: stores the translatable strings from the **Source** together with French
+  translations for all German texts. English texts have not been translated.
+
+## Local development
+
+### Setup
+
+The handbook can be downloaded and setup locally on your Computer.
+First open a terminal window and clone the repo:
+
+```commandline
+git clone git@github.com:opendata-swiss/ogdch-handbook.git
+cd ogdch-handbook
 ```
 
-### Common Operations
+If you want to be able to build the handbook locally from its
+**Source**, then you need to set up the virtual python3 environment and install the
+requirements, as shown below:
 
-1. **Initialization** - Set up the project environment and configuration
-2. **Execution** - Run the main functionality with appropriate parameters
-3. **Monitoring** - Check status and output during operation
-4. **Shutdown** - Cleanly terminate and save state
-
-### Examples
-
-```bash
-ogdch-handbook --input /path/to/input --output /path/to/output
-ogdch-handbook --config /path/to/config.yaml
-ogdch-handbook --verbose --log-level debug
-```
-
-## API
-
-### Overview
-
-OGDCH_HANDBOOK exposes a standard API consistent with its category.
-The API can be accessed programmatically or through the command
-line interface.
-
-### Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| GET | /status | Get current status |
-| POST | /execute | Execute main operation |
-| GET | /results | Retrieve results |
-| DELETE | /reset | Reset to initial state |
-
-### Authentication
-
-API authentication is handled through standard mechanisms.
-Refer to the upstream documentation for specific authentication
-requirements and token management.
-
-### Rate Limiting
-
-The API implements rate limiting to prevent abuse. Default limits
-are configurable through the configuration file.
-
-## Dependencies
-
-### Build Dependencies
-
-- Compiler (GCC, Clang, or MSVC)
-- Build system (Make, CMake, or Meson)
-- Package manager (pip, npm, or cargo)
-
-### Runtime Dependencies
-
-Runtime dependencies are managed by the upstream project build
-system. Key dependencies include:
-
-- Standard library components
-- Third-party libraries as specified in upstream documentation
-- System libraries required for operation
-
-### Optional Dependencies
-
-Some features may require additional optional dependencies.
-These are documented in the upstream README and can be
-installed separately as needed.
-
-## Configuration
-
-### Configuration File
-
-OGDCH_HANDBOOK uses a configuration file for runtime settings.
-The default location is typically:
-
-- **Linux/macOS:** ~/.config/ogdch-handbook/config.yaml
-- **Windows:** %APPDATA%\ogdch-handbook\config.yaml
-
-### Configuration Options
-
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| log_level | string | info | Logging verbosity |
-| output_dir | string | ./output | Output directory |
-| max_workers | int | 4 | Maximum worker threads |
-| timeout | int | 30 | Operation timeout (seconds) |
-
-### Environment Variables
-
-The following environment variables can override configuration:
-
-- **OGDCH_HANDBOOK_LOG_LEVEL** - Override log level
-- **OGDCH_HANDBOOK_CONFIG** - Path to custom config file
-- **OGDCH_HANDBOOK_OUTPUT** - Override output directory
-
-## Contributing
-
-Contributions to OGDCH_HANDBOOK are welcome. Please follow
-these guidelines:
-
-1. **Fork the repository** and create a feature branch
-2. **Make your changes** with clear commit messages
-3. **Add tests** for new functionality
-4. **Update documentation** as needed
-5. **Submit a pull request** with a clear description
-
-### Code Style
-
-Follow the code style established in the upstream project.
-Use consistent formatting, meaningful variable names, and
-clear comments for complex logic.
-
-### Reporting Issues
-
-When reporting issues, please include:
-
-- Operating system and version
-- Project version or commit hash
-- Steps to reproduce the issue
-- Expected vs actual behavior
-- Relevant log output
+```commandline
+python3 -
 
 ## License
 
-**Overlay license:** Anticommons 0.1.0
-**Upstream license:** MIT
+Upstream terms preserved in `THIRD_PARTY_LICENSES/`. Overlay licensed under Anticommons 0.1.0.
 
-This project is distributed under the MIT license.
-The Anticloud overlay is licensed under Anticommons 0.1.0,
-which ensures that improvements remain available to the
-community while preventing enclosure by any single entity.
+## Verification
 
-## Upstream
-
-**SHA-256:** pending resolution
-
-The upstream project is pinned to the above commit hash
-to ensure reproducible builds and verifiable provenance.
-
-## Benchmarks
-
-Benchmark results are recorded in BENCH.json.
-
-Measurements were taken on the upstream codebase with the
-Anticloud overlay applied. Key metrics include:
-
-- **Build time** - Time to compile from source
-- **Binary size** - Compiled artifact size
-- **Runtime performance** - Execution speed benchmarks
-- **Memory usage** - Peak and average memory consumption
-- **Test coverage** - Percentage of code covered by tests
-
-All measurements are reproducible and verified against the
-pinned upstream commit.
-
-## Additional Information
-
-This project is part of the Anticloud ecosystem, providing
-GOVERNMENT functionality with measured performance characteristics.
-
-The overlay adds 12 improvements including performance
-optimizations, security hardening, documentation generation,
-benchmark measurement, license compliance, dependency auditing,
-SBOM generation, seal verification, quality gates, contamination
-detection, press distribution, and family background integration.
-
-## Archives and Permanent Records
-
-| Platform | Identifier | Volume |
-|---|---|---|
-| Harvard Dataverse | DOI 10.7910/DVN/YMJKOG | 145 citable datasets |
-| AIOSS verification kit | DOI 10.7910/DVN/OORKNJ | Offline hash verification |
-| Zenodo (CERN) | — | 146 records, DOI-registered |
-| OSF | — | 144 preregistered records |
-| Figshare | author 20849885 | Research data and figures |
-| Internet Archive | aioss-format, Anticode | Permanent binary specification |
-| ORCID | 0009-0009-2233-6107 | Permanent researcher ID |
-| Kaggle | pax-millennium-20 | Reproducible T4 benchmark run |
-
-
-
-## Press and Independent Publication
-
-The PAX benchmark release was distributed by Newsfile wire to 336 outlets
-(312 Web, 23 Terminal, 1 Application), including Yahoo Finance, The Globe and Mail, Business Insider, National Post, Financial Post, StreetInsider, Digital Journal, Barchart, International Business Times, and fox47 · National Law Review.
-Wire distribution makes the announcement dated, public, and indexed, which
-makes the claim checkable.
-
+Recompute the SHA3-256 of `BENCH.json` and compare to this package’s register. Any drift = invalid package.
